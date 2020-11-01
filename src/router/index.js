@@ -8,6 +8,8 @@ import InvestmentList from '@/components/InvestmentList'
 import InvestmentCreate from '@/components/InvestmentCreate'
 import StockList from '@/components/StockList'
 import StockCreate from '@/components/StockCreate'
+import BeneficiaryList from '@/components/BeneficiaryList'
+import BeneficiaryCreate from '@/components/BeneficiaryCreate'
 
 Vue.use(Router)
 
@@ -79,6 +81,26 @@ export default new Router({
       path: '/stock-create/:pk',
       name: 'StockUpdate',
       component: StockCreate
+    },
+    {
+      path: '/beneficiary-list',
+      name: 'BeneficiariesList',
+      component: BeneficiaryList
+    },
+    {
+      path: '/beneficiary-list/:msg',
+      name: 'BeneficiaryUpdatedList',
+      component: BeneficiaryList
+    },
+    {
+      path: '/beneficiary-create',
+      name: 'BeneficiaryCreate',
+      component: BeneficiaryCreate
+    },
+    {
+      path: '/beneficiary-create/:pk',
+      name: 'BeneficiaryUpdate',
+      component: BeneficiaryCreate
     },
  
     {

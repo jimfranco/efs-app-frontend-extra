@@ -1,7 +1,8 @@
 /* eslint-disable */
 import axios from 'axios';
-//const API_URL = 'http://localhost:8000'; /* http://groyce.pythonanywhere.com or http://localhost:8000 */
-const API_URL = 'https://dry-chamber-16363.herokuapp.com';
+// const API_URL = 'http://localhost:8000'; /* http://groyce.pythonanywhere.com or http://localhost:8000 */
+// const API_URL = 'https://dry-chamber-16363.herokuapp.com';
+const API_URL = 'https://safe-bastion-61618.herokuapp.com';
 
 
 export class APIService {
@@ -163,6 +164,47 @@ deleteStock(stock_Pk){
   return axios.delete(url, {headers: headers});
 }
 
+// Beneficiary Methods
+
+getBeneficiary(param_pk) {
+  const url = `${API_URL}/api/beneficiaries/${param_pk}`;
+  let jwtToken = localStorage.getItem('token');
+  console.log(":::jwtToken:::::"+jwtToken);
+  const headers = {Authorization: `jwt ${jwtToken}`};
+  return axios.get(url, {headers: {Authorization: `jwt ${jwtToken}`}});
+}
+
+getBeneficiaryList() {
+    const url = `${API_URL}/api/beneficiaries`;
+    let jwtToken = localStorage.getItem('token');
+    console.log(":::jwtToken:::::" + jwtToken);
+    const headers = {Authorization: `jwt ${jwtToken}`};
+    return axios.get(url, {headers: headers});
+
+}
+
+addNewBeneficiary(beneficiary){
+const url = `${API_URL}/api/beneficiaries/`;
+let jwtToken = localStorage.getItem('token');
+const headers = {Authorization: `jwt ${jwtToken}`};
+return axios.post(url, beneficiary, {headers: headers});
+}
+
+updateBeneficiary(beneficiary){
+ const url = `${API_URL}/api/beneficiaries/${stock.pk}`;
+ let jwtToken = localStorage.getItem('token');
+ const headers = {Authorization: `jwt ${jwtToken}`};
+ return axios.put(url, beneficiary, {headers: headers});
+}
+
+deleteBeneficiary(beneficiary_Pk){
+  const url = `${API_URL}/api/beneficiaries/${beneficiary_Pk}`;
+  let jwtToken = localStorage.getItem('token');
+  const headers = {Authorization: `jwt ${jwtToken}`};
+  return axios.delete(url, {headers: headers});
+}
+
+// Authentication Methods
  authenticateLogin(credentials) {
     const url = `${API_URL}/auth/`;
     return axios.post(url, credentials);

@@ -66,6 +66,7 @@
         { title: 'Customers', url:"/customer-list" },
         { title: 'Stocks', url:"/stock-list" },
         { title: 'Investments', url:"/investment-list" },
+        { title: 'Beneficiaries', url:"/beneficiary-list"}
       ]
     }),
 
